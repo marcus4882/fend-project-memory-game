@@ -1,7 +1,33 @@
 /*
  * Create a list that holds all of your cards
  */
+ // cards array holds all cards
+let card = document.getElementsByClassName("card");
+let cards = [...card]
 
+// deck of all cards
+const deck = document.getElementById("card-deck");
+
+// declaring variable of the moves
+let moves = 0;
+let counter = document.querySelector(".moves");
+
+// declare star  icons variables
+const stars = document.querySelectorAll(".fa-star");
+
+// declaring matchedcards variable
+let matchedCard = document.getElementsByClassName("match");
+
+ // stars listings
+ let starsList = document.querySelectorAll(".stars li");
+
+ // close icon
+ let closeicon = document.querySelector(".close");
+
+ let modal = document.getElementById("popup1")
+
+ // array for cards opened
+var openedCards = [];
 
 /*
  * Display the cards on the page
@@ -24,7 +50,64 @@ function shuffle(array) {
 
     return array;
 }
+//shuffles cards when page is refreshed / loads
+document.body.onload = startGame();
 
+//function to start a new play
+function startGame(){
+// shuffle deck
+    cards = shuffle(cards);
+// remove all exisiting classes from each card
+    for (var i = 0; i < cards.length; i++){
+        deck.innerHTML = "";
+        [].forEach.call(cards, function(item) {
+            deck.appendChild(item);
+        });
+        cards[i].classList.remove("show", "open", "match", "disabled");
+    }
+// reset moves
+    moves = 0;
+    counter.innerHTML = moves;
+    // reset rating
+    for (var i= 0; i < stars.length; i++){
+        stars[i].style.color = "#FFD700";
+        stars[i].style.visibility = "visible";
+    }
+//reset timer
+        second = 0;
+        minute = 0;
+        hour = 0;
+        var timer = document.querySelector(".timer");
+        timer.innerHTML = "0 mins 0 secs";
+        clearInterval(interval);
+    }
+//  toggles open and show class to display cards
+    var displayCard = function (){
+        this.classList.toggle("open");
+        this.classList.toggle("show");
+        this.classList.toggle("disabled");
+    };
+    / @description add opened cards to OpenedCards list and check if cards are match or not
+    function cardOpen() {
+        openedCards.push(this);
+        var len = openedCards.length;
+        if(len === 2){
+            moveCounter();
+            if(openedCards[0].type === openedCards[1].type){
+                matched();
+            } else {
+                unmatched();
+            }
+        }
+    };
+    / @description when cards match
+    function matched(){
+        openedCards[0].classList.add("match", "disabled");
+        openedCards[1].classList.add("match", "disabled");
+        openedCards[0].classList.remove("show", "open", "no-event");
+        openedCards[1].classList.remove("show", "open", "no-event");
+        openedCards = [];
+    }
 
 /*
  * set up the event listener for a card. If a card is clicked:
