@@ -138,7 +138,7 @@ h1 {
 }
 
 /*
-Styles for the  congratulations
+Styles for the congratulations
 */
 
 .overlay {
@@ -167,7 +167,7 @@ Styles for the  congratulations
 	width: 85%;
 	position: relative;
 	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: cursive, Tahoma;
 }
 
 .popup h2 {
@@ -214,7 +214,7 @@ Styles for the  congratulations
 	display: block;
 	margin: 0 auto;
 	width: 50%;
-	font-family: 'Gloria Hallelujah', cursive;
+	font-family: Tahoma, cursive;
 	color: #ffffff;
 	border-radius: 5px;
 }
@@ -291,7 +291,7 @@ Styles for the  congratulations
 }
 
 
-/****** Media queries
+/******inserting Media queries
 ***************************/
 
 
