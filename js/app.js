@@ -87,7 +87,7 @@ function startGame(){
         this.classList.toggle("show");
         this.classList.toggle("disabled");
     };
-    / @description add opened cards to OpenedCards list and check if cards are match or not
+// @description add opened cards to OpenedCards list and check if cards are match or not
     function cardOpen() {
         openedCards.push(this);
         var len = openedCards.length;
@@ -100,7 +100,7 @@ function startGame(){
             }
         }
     };
-    / @description when cards match
+// @description when cards match
     function matched(){
         openedCards[0].classList.add("match", "disabled");
         openedCards[1].classList.add("match", "disabled");
